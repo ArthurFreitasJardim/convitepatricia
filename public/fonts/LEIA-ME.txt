@@ -1,0 +1,12 @@
+Esta pasta é destinada às fontes originais utilizadas no projeto:
+
+- bela-yasmine.otf (arquivo original: Bela Yasmine FONTE NOME.otf)
+- gabriola.ttf
+
+Os arquivos binários de fonte não estão incluídos no pacote.
+As palavras principais do convite foram renderizadas nas fontes originais em arquivos
+PNG transparentes dentro de public/images, para preservar a aparência sem incluir
+os arquivos de fonte.
+
+Se você possui as fontes originais, coloque uma cópia delas nesta pasta com os nomes
+acima para ativar também os textos com font-family no CSS.
