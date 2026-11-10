@@ -1,0 +1,65 @@
+
+.container {
+  width: 100%;
+  margin-top: 22px;
+}
+
+.frame {
+  width: 100%;
+  height: 390px;
+  overflow: hidden;
+  border: 1px solid rgba(214, 182, 138, 0.35);
+  border-radius: 6px;
+  background: #151014;
+}
+
+.frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.caption {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin: 12px 0 0;
+  color: #c0afb0;
+  font: 400 12px/1.6 Arial, sans-serif;
+}
+
+.caption svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #d6b68a;
+}
+
+.caption strong {
+  color: #f2c7cb;
+  font-weight: 600;
+}
+
+/* Mapa adaptado para celulares, sem rolagem horizontal. */
+@media (max-width: 600px) {
+  .container {
+    margin-top: 16px;
+  }
+
+  .frame {
+    height: 290px;
+    border-radius: 4px;
+  }
+
+  .caption {
+    margin-top: 10px;
+    font-size: 11px;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 360px) {
+  .frame {
+    height: 260px;
+  }
+}

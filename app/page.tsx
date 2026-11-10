@@ -1,5 +1,2 @@
-import { InvitePage } from "@/components/InvitePage";
-
-export default function Home() {
-  return <InvitePage />;
-}
+import { HomePage } from "@/components/HomePage";
+export default function Page() { return <HomePage/>; }
