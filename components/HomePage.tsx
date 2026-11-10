@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import {
   ArrowUpRight,
@@ -12,8 +11,9 @@ import { site } from "@/data/site";
 import { Footer, Header } from "./SiteChrome";
 import { SearchInvitation } from "./SearchInvitation";
 import { VenueMap } from "./VenueMap";
+import { VenueCarousel } from "./VenueCarousel";
+import venueStyles from "./VenueCarousel.module.css";
 
-// Abre a navegação até o Bellara no Google Maps, inclusive no celular.
 const directionsUrl =
   "https://www.google.com/maps/dir/?api=1&destination=" +
   encodeURIComponent(`${site.local}, ${site.endereco}`);
@@ -34,6 +34,7 @@ export function HomePage() {
 
           <div className="hero-content">
             <p className="eyebrow">UM CONVITE FEITO COM AMOR</p>
+
             <h1 id="hero-title" className="sr-only">
               Paty — 50 Carnavais
             </h1>
@@ -70,12 +71,15 @@ export function HomePage() {
           </div>
 
           <p className="eyebrow">QUERIDOS AMIGOS E FAMILIARES</p>
-          <h2 className="script-title">A vida merece ser celebrada</h2>
+
+          <h2 className="script-title">
+            A vida merece ser celebrada
+          </h2>
 
           <p className="center-copy">
-            São 50 carnavais, muitas histórias e motivos para agradecer. E não
-            existe jeito melhor de comemorar do que estar pertinho das pessoas
-            que fazem parte da minha vida.
+            São 50 carnavais, muitas histórias e motivos para agradecer.
+            E não existe jeito melhor de comemorar do que estar pertinho
+            das pessoas que fazem parte da minha vida.
           </p>
 
           <p className="center-copy highlight-copy">
@@ -102,38 +106,34 @@ export function HomePage() {
         </section>
 
         <section className="venue-section" id="local">
-          <div className="venue-heading">
-            <div>
-              <p className="eyebrow">NOSSO LUGAR ESPECIAL</p>
-              <h2 className="section-title">O cenário da nossa festa</h2>
+          <div className={venueStyles.venueIntro}>
+            <p className="eyebrow">O CENÁRIO DA NOSSA FESTA</p>
+
+            <h2 className={venueStyles.venueName}>
+              {site.local}
+            </h2>
+
+            <div
+              className={venueStyles.ornament}
+              aria-hidden="true"
+            >
+              <span /> ✧ <span />
             </div>
-            <p>
-              Um lugar lindo para reunir quem a gente ama e brindar a vida.
+
+            <p className={venueStyles.venueDescription}>
+              Um lugar especial para reunir quem a gente ama
+              e celebrar a vida.
             </p>
           </div>
 
-          <div className="venue-gallery">
-            {site.fotos.map((photo, index) => (
-              <figure
-                key={photo.src}
-                className={`venue-photo venue-photo-${index + 1}`}
-              >
-                {/* Fotos demonstrativas: confirme a autorização para uso. */}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img loading="lazy" src={photo.src} alt={photo.alt} />
-                <figcaption>{photo.label}</figcaption>
-              </figure>
-            ))}
-          </div>
-
-          <p className="photo-credit">
-            Fotos ilustrativas do espaço: Bellara Recepções / Casamentos.com.br.
-            Confirme a autorização antes da publicação.
-          </p>
+          <VenueCarousel photos={site.fotos} />
 
           <div className="venue-details">
             <div>
-              <span className="eyebrow">BELLARA RECEPÇÕES</span>
+              <span className="eyebrow">
+                BELLARA RECEPÇÕES
+              </span>
+
               <p>{site.endereco}</p>
             </div>
 
@@ -143,11 +143,11 @@ export function HomePage() {
               rel="noopener noreferrer"
               className="btn btn-outline"
             >
-              Como chegar <ArrowUpRight size={17} aria-hidden="true" />
+              Como chegar
+              <ArrowUpRight size={17} aria-hidden="true" />
             </a>
           </div>
 
-          {/* Mapa incorporado, imediatamente abaixo do endereço. */}
           <VenueMap />
         </section>
 
@@ -157,25 +157,34 @@ export function HomePage() {
           </div>
 
           <p className="eyebrow">FALTA POUCO PARA A FESTA</p>
-          <h2 className="script-title">Confirme sua presença</h2>
+
+          <h2 className="script-title">
+            Confirme sua presença
+          </h2>
 
           <p className="center-copy">
             Procure pelo título do seu convite, como{" "}
-            <strong>“Fernando e família”</strong>. Depois é só escolher quem
-            vai e o tamanho do abadá de cada pessoa.
+            <strong>“Patrícia e família”</strong>.
+            Depois é só escolher quem vai e o tamanho do
+            abadá de cada pessoa.
           </p>
 
           <SearchInvitation />
 
           <p className="search-helper">
-            <Heart size={15} /> Não encontrou seu convite? Fale com quem enviou
+            <Heart size={15} />
+            Não encontrou seu convite? Fale com quem enviou
             o convite para conferir o nome cadastrado.
           </p>
         </section>
 
         <section className="closing-message">
           <Sparkles size={18} />
-          <p>O melhor da vida é viver momentos assim, juntos.</p>
+
+          <p>
+            O melhor da vida é viver momentos assim, juntos.
+          </p>
+
           <span>Com carinho, Paty ♡</span>
         </section>
       </main>

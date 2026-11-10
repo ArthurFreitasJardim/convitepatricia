@@ -7,24 +7,36 @@ export const site = {
   horario: "Horário a confirmar",
   local: "Bellara Recepções",
   endereco: "Av. Portugal, 750 — Santa Amélia, Belo Horizonte — MG",
-  maps: "https://www.google.com/maps/search/?api=1&query=Bellara%20Recep%C3%A7%C3%B5es%20Av.%20Portugal%20750%20Belo%20Horizonte",
+
+  maps:
+    "https://www.google.com/maps/search/?api=1&query=Bellara%20Recep%C3%A7%C3%B5es%20Av.%20Portugal%20750%20Belo%20Horizonte",
+
   fotos: [
     {
       src: "https://cdn0.casamentos.com.br/vendor/8568/3_2/1280/jpeg/whatsapp-image-2025-01-28-at-15-00-23-1-1_13_2505-173814047995042.jpeg",
-      alt: "Gramado e fachada envidraçada do Bellara Recepções",
-      label: "O espaço"
+      alt: "Fachada envidraçada e gramado do Bellara Recepções",
+    },
+    {
+      src: "https://cdn0.casamentos.com.br/vendor/8568/3_2/960/jpeg/whatsapp-image-2025-01-28-at-15-00-24_13_2505-173814034993703.jpeg",
+      alt: "Vista panorâmica da Lagoa da Pampulha a partir do Bellara",
     },
     {
       src: "https://cdn0.casamentos.com.br/vendor/8568/3_2/960/jpeg/whatsapp-image-2025-01-28-at-15-00-22-1_13_2505-173814035769302.jpeg",
-      alt: "Lustre no salão do Bellara Recepções",
-      label: "Ambientes especiais"
+      alt: "Lustre decorativo no salão do Bellara Recepções",
+    },
+    {
+      src: "https://cdn0.casamentos.com.br/vendor/8568/3_2/960/jpeg/whatsapp-image-2025-11-04-at-14-18-06-2_13_448568-176227673661825.jpeg",
+      alt: "Salão de festas do Bellara preparado com mesas e arranjos de flores",
+    },
+    {
+      src: "https://cdn0.casamentos.com.br/vendor/8568/3_2/960/jpeg/whatsapp-image-2025-08-27-at-11-25-05_13_448568-176227643135435.jpeg",
+      alt: "Pôr do sol visto da área externa do Bellara",
     },
     {
       src: "https://cdn0.casamentos.com.br/vendor/8568/3_2/960/jpeg/whatsapp-image-2025-11-04-at-14-18-07-1_13_448568-176227674343745.jpeg",
       alt: "Pista de dança iluminada do Bellara Recepções",
-      label: "Uma noite para celebrar"
-    }
-  ]
+    },
+  ],
 };
 
 export const sizes = {
@@ -53,18 +65,36 @@ export const sizes = {
 } as const;
 
 export type Model = keyof typeof sizes;
-export const models: Model[] = ["tradicional", "babyLook", "infantil"];
+
+export const models: Model[] = [
+  "tradicional",
+  "babyLook",
+  "infantil",
+];
+
 export const modelNames: Record<Model, string> = {
   tradicional: "Tradicional",
   babyLook: "Baby Look",
   infantil: "Infantil",
 };
+
 export function isModel(value: unknown): value is Model {
-  return typeof value === "string" && Object.prototype.hasOwnProperty.call(sizes, value);
+  return (
+    typeof value === "string" &&
+    Object.prototype.hasOwnProperty.call(sizes, value)
+  );
 }
-export function isSize(model: Model, value: unknown): value is string {
-  return typeof value === "string" && sizes[model].some((size) => size.code === value);
+
+export function isSize(
+  model: Model,
+  value: unknown
+): value is string {
+  return (
+    typeof value === "string" &&
+    sizes[model].some((size) => size.code === value)
+  );
 }
+
 export function formatCentimeters(value: number): string {
   return String(value).replace(".", ",");
 }

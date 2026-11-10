@@ -1,6 +1,0 @@
-Coloque AQUI as fontes que você já possui, com os nomes:
-
-bela-yasmine.otf
-gabriola.ttf
-
-Elas não estão incluídas no pacote. O site usa essas fontes via app/globals.css.
