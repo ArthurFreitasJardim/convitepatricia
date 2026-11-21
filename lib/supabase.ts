@@ -30,7 +30,7 @@ export async function getInvitation(code: string): Promise<Invitation | null> {
 export async function allInvitations(): Promise<Invitation[]> {
   const all: Invitation[] = [];
   for (let start = 0;;start+=200) {
-    const { data, error } = await client().from("invite_groups").select(columns).order("created_at", {ascending:false}).range(start,start+199);
+    const { data, error } = await client().from("invite_groups").select(columns).order("title_search", {ascending:true}).order("created_at", {ascending:true}).range(start,start+199);
     if (error) throw new Error(error.message);
     const page = (data ?? []) as unknown as RawGroup[];
     all.push(...page.map(mapGroup));
@@ -42,7 +42,7 @@ export async function findTitles(q: string): Promise<{title:string;code:string}[
   const needle = normalizeSearch(q);
   if (needle.length < 3 || needle.length > 80) return [];
   const { data, error } = await client().from("invite_groups")
-    .select("title,code").ilike("title_search",`%${needle}%`).order("title").limit(8);
+    .select("title,code").ilike("title_search",`%${needle}%`).order("title_search").limit(8);
   if (error) throw new Error(error.message);
   return (data ?? []).map(row => ({ title: row.title as string, code: row.code as string }));
 }
